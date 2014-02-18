@@ -2,6 +2,17 @@
   "sources": {
     "rsyslog": {
       "locked_version": "1.10.2"
+    },
+    "td-agent": {
+      "locked_version": "0.0.1",
+      "git": "https://github.com/treasure-data/chef-td-agent.git",
+      "ref": "277ed8c495cf12e23667c10706457eeb1304a1b5"
+    },
+    "apt": {
+      "locked_version": "2.3.8"
+    },
+    "yum": {
+      "locked_version": "3.1.0"
     }
   }
 }

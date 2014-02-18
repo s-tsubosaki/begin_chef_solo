@@ -7,4 +7,5 @@
 # All rights reserved - Do Not Redistribute
 #
 
+# #7開始
 log "Hello, Chef!"

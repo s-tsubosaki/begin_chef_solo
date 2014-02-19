@@ -8,8 +8,8 @@
 #
 
 git "/tmp/ruby-build" do
-  user node[:user][:name]
   repository "git://github.com/sstephenson/ruby-build.git"
+  user node[:current_user]
   reference "master"
   action :checkout
 end

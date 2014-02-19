@@ -3,10 +3,17 @@
 # Recipe:: default
 #
 
+is_mac_os = node[:platform] =~ /mac/
+
 if node['oh_my_zsh']['users'].any?
-  if node[:platform] =~ /mac/
-    homebrew "zsh"
-    homebrew "git"
+  if is_mac_os
+    include_recipe 'homebrew'
+    package "zsh" do
+      provider Chef::Provider::Package::Homebrew
+    end
+    package "git" do
+      provider Chef::Provider::Package::Homebrew
+    end
   else
     package "zsh"
     package "git"
@@ -24,7 +31,7 @@ node['oh_my_zsh']['users'].each do |user_hash|
     log "process user=#{user_name}, home=#{home_directory}"
 
     git "#{home_directory}/.oh-my-zsh" do
-      repository 'git://github.com/robbyrussell/oh-my-zsh.git'
+      repository 'https://github.com/robbyrussell/oh-my-zsh.git'
       user user_name
       reference "master"
       action :sync
@@ -56,9 +63,12 @@ node['oh_my_zsh']['users'].each do |user_hash|
       shell '/bin/zsh'
     end
 
-    execute "source /etc/profile to all zshrc" do
-      command "echo 'source /etc/profile' >> /etc/zsh/zprofile"
-      not_if "grep 'source /etc/profile' /etc/zsh/zprofile"
+    if !is_mac_os
+      execute "source /etc/profile to all zshrc" do
+        command "echo 'source /etc/profile' >> /etc/zsh/zprofile"
+        not_if "grep 'source /etc/profile' /etc/zsh/zprofile"
+      end
     end
+
   end  
 end

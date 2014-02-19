@@ -15,3 +15,5 @@ default['oh_my_zsh'][:users] = [
     :plugins => %w{gem git ruby}
   }
 ]
+
+default['homebrew']['owner'] = 's-tsubosaki'

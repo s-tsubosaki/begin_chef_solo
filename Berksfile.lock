@@ -3,6 +3,9 @@
     "rsyslog": {
       "locked_version": "1.10.2"
     },
+    "homebrew": {
+      "locked_version": "1.5.4"
+    },
     "td-agent": {
       "locked_version": "0.0.1",
       "git": "https://github.com/treasure-data/chef-td-agent.git",

@@ -1,0 +1,7 @@
+{
+    "id" : "tsubosaki",
+    "oh-my-zsh" : {
+        "theme" : "avit",
+        "plugins" : ["gem","git","ruby","knife"]
+    }
+}

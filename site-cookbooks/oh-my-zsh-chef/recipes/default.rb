@@ -21,14 +21,20 @@ if node['oh_my_zsh']['users'].any?
 end
 
 # for each listed user
-node['oh_my_zsh']['users'].each do |user_hash|
-  user_name = user_hash[:login]
+user_ids = data_bag('users')
+user_ids.each do |id|
+  user_hash = data_bag_item('users',id)
+  next if user_hash.nil?
+
+  user_name = id
+  user_setting = user_hash['oh-my-zsh']
 
   # ohai情報にuser_nameがある場合のみ
   if node[:etc][:passwd].key?(user_name)
     home_directory = node[:etc][:passwd][user_name][:dir]
 
     log "process user=#{user_name}, home=#{home_directory}"
+    log "user_hash=#{user_setting}"
 
     git "#{home_directory}/.oh-my-zsh" do
       repository 'https://github.com/robbyrussell/oh-my-zsh.git'
@@ -45,20 +51,20 @@ node['oh_my_zsh']['users'].each do |user_hash|
 
     template "#{home_directory}/.zshrc" do
       source "zshrc.erb"
-      owner user_hash[:login]
+      owner user_name
       mode "644"
       action :create
       #action :create_if_missing
       variables({
-        :user => user_hash[:login],
-        :theme => user_hash[:theme] || 'robbyrussell',
-        :case_sensitive => user_hash[:case_sensitive] || false,
-        :plugins => user_hash[:plugins] || %w(git),
+        :user => user_name,
+        :theme => user_setting['theme'] || 'robbyrussell',
+        :case_sensitive => user_setting['case_sensitive'] || false,
+        :plugins => user_setting['plugins'] || %w(git),
         :use_rbenv => has_rbenv.length > 0 ? 1 : 0
       })
     end
 
-    user user_hash[:login] do
+    user user_name do
       action :modify
       shell '/bin/zsh'
     end

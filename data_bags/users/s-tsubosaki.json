@@ -2,6 +2,6 @@
     "id" : "s-tsubosaki",
     "oh-my-zsh" : {
         "theme" : "dogenpunk",
-        "plugins" : ["gem","git","ruby","knife"]
+        "plugins" : ["gem","git","ruby"]
     }
 }

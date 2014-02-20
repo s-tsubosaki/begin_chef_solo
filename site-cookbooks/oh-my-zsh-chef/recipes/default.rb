@@ -8,16 +8,9 @@ is_mac_os = node[:platform] =~ /mac/
 if node['oh_my_zsh']['users'].any?
   if is_mac_os
     include_recipe 'homebrew'
-    package "zsh" do
-      provider Chef::Provider::Package::Homebrew
-    end
-    package "git" do
-      provider Chef::Provider::Package::Homebrew
-    end
-  else
-    package "zsh"
-    package "git"
   end
+  package "zsh"
+  package "git"
 end
 
 # for each listed user

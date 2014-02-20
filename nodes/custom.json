@@ -1,0 +1,8 @@
+{
+    "run_list":[
+        "ruby-build",
+        "recipe[oh-my-zsh-chef]",
+        "gem_twitter::default",
+        "recipe[hello::default]"
+    ]
+}

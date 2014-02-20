@@ -9,3 +9,9 @@
 
 # #7開始
 log "Hello, Chef!"
+
+%w{gcc make}.each do |pkg|
+  package pkg do
+    action :install
+  end
+end

@@ -1,1 +1,16 @@
-{"run_list":[]}
+{
+    "run_list":[
+        "hello",
+        "nginx",
+        "custom-td-agent",
+        "oh-my-zsh-chef",
+        "template_test",
+        "script_execute",
+        "definition",
+        "ec2_micro_swap",
+        "file_directory",
+        "gem_twitter",
+        "ruby-build",        
+        "user_group"
+    ]
+}

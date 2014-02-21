@@ -40,9 +40,9 @@ end
 else
 
 template "nginx.conf" do
-  # デフォルトのインストール先になる
+  # デフォルトのインストール先にならない
   path "/etc/nginx/nginx.conf"
-  # nginx.conf.erbが自動選択される
+  # nginx.conf.erbが自動選択されない
   source "nginx.conf.erb"
   owner "root"
   group "root"

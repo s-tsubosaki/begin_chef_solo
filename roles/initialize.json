@@ -10,13 +10,13 @@
     "description" : "",
     "chef_type" : "role",
     "run_list" : [
-        "hello",
-        "nginx"
+        //"hello",
+        //"nginx"
         //"custom-td-agent",
         //"oh-my-zsh-chef",
         //"template_test",
         //"script_execute",
-        //"definition",
+        "definition"
         //"ec2_micro_swap",
         //"file_directory",
         //"gem_twitter",

@@ -7,8 +7,6 @@
 # All rights reserved - Do Not Redistribute
 #
 
-Chef::Log.info "by chef log info"
-
 user_name = node[:current_user]
 home_directory = node[:etc][:passwd][node[:current_user]][:dir]
 

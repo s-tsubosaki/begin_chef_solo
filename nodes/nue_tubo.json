@@ -1,0 +1,6 @@
+{
+    "run_list":[
+        "provider_test"
+        //"role[initialize]"
+    ]
+}
